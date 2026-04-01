@@ -163,22 +163,7 @@
 })();
 
 
-// ─── DISCORD COPY + TOAST ──────────────────────────────────────
-(function () {
-  const btn = document.getElementById('discord-btn');
-  const toast = document.getElementById('toast');
-  let toastTimer;
 
-  if (!btn || !toast) return;
-
-  btn.addEventListener('click', () => {
-    navigator.clipboard.writeText('Mythus').then(() => {
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
-    });
-  });
-})();
 
 
 // ─── SMOOTH SCROLL FOR CTA ─────────────────────────────────────
