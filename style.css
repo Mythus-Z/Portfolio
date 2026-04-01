@@ -227,14 +227,27 @@ body {
   box-shadow: 0 0 30px var(--blue-glow), 0 0 60px rgba(30,144,255,0.15);
 }
 
-.btn-primary:hover::before {
-  transform: scaleX(1);
+#hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 6rem;
+  padding-bottom: clamp(7rem, 12vh, 10rem);
+}
+
+.btn-primary {
+  margin-bottom: clamp(3rem, 8vh, 5rem);
 }
 
 .scroll-hint {
   position: absolute;
-  bottom: 2rem;
   left: 50%;
+  bottom: clamp(1rem, 3vh, 2rem);
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -246,6 +259,7 @@ body {
   text-transform: uppercase;
   opacity: 0;
   animation: fadeUp 0.6s 2s forwards;
+  pointer-events: none;
 }
 
 .scroll-line {
