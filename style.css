@@ -129,9 +129,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; 
   text-align: center;
-  padding: 6rem 2rem 4rem;
+  padding: 6rem 2rem 2rem; 
 }
 
 .hero-eyebrow {
