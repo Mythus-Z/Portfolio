@@ -726,3 +726,20 @@ footer {
     display: none;
   }
 }
+
+/* ─── HERO STATUS DOT ─── */
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
