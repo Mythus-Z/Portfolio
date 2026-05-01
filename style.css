@@ -668,3 +668,38 @@ footer {
     display: none;
   }
 }
+
+/* Video Card Styles */
+.video-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.card-video-container {
+  position: relative;
+  width: 100%;
+  height: 70%;
+  background: #000;
+  overflow: hidden;
+}
+
+.demo-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+.card-content {
+  padding: 1.5rem;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(5, 10, 20, 0.95);
+  backdrop-filter: blur(0px);
+}
