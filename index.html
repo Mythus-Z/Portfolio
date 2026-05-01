@@ -45,7 +45,6 @@
       See My Work
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
-
   </section>
 
   <!-- ABOUT -->
@@ -81,44 +80,41 @@ I'm Mythus. — 1.5 years in. I move fast and don't ship anything I wouldn't sta
 
     <div class="projects-grid">
 
-      <div class="project-card video-card reveal" data-delay="0">
-  <div class="card-scan-line"></div>
-  
-  <!-- VIDEO SECTION - takes ~70% of card height -->
-  <div class="card-video-container">
-    <iframe 
-      class="demo-video"
-      src="https://www.youtube.com/embed/4mFvSEBHSn8?autoplay=1&mute=1&loop=1&playlist=4mFvSEBHSn8&controls=1&modestbranding=1&rel=0&showinfo=0"
-      title="Procedural Dungeon Generator Demo"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
-  </div>
-  
-  <!-- CONTENT SECTION - bottom 30% with details and GitHub link -->
-  <div class="card-content">
-    <div class="project-category">Systems</div>
-    <h3 class="project-title">Procedural Dungeon Generator</h3>
-    
-    <ul class="project-bullets">
-      <li>Generates fully procedural, voxel-based dungeons.</li>
-      <li>Ultra-fast performance, even thousands of rooms.</li>
-      <li>Supports prefab and entity spawning seamlessly.</li>
-      <li>Highly customizable</li>
-    </ul>
-    
-    <a class="btn-ghost" href="https://github.com/Mythus-Z/Procedural-Dungeon-Generation-Roblox-" target="_blank" rel="noopener">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-      </svg>
-      View on GitHub
-    </a>
-  </div>
-</div>
+      <!-- Procedural Dungeon Generator — featured card with video -->
+      <div class="project-card project-card--featured reveal" data-delay="0" id="dungeon-card">
+        <div class="featured-card-media" id="dungeon-media">
+          <iframe
+            id="dungeon-iframe"
+            class="featured-card-iframe"
+            src="https://www.youtube.com/embed/4mFvSEBHSn8?autoplay=1&mute=1&loop=1&playlist=4mFvSEBHSn8&controls=1&modestbranding=1&rel=0&showinfo=0&enablejsapi=1"
+            title="Procedural Dungeon Generator Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="featured-card-body">
+          <div class="project-category">Systems</div>
+          <h3 class="project-title">Procedural Dungeon Generator</h3>
+
+          <ul class="project-bullets">
+            <li>Generates fully procedural, voxel-based dungeons.</li>
+            <li>Ultra-fast performance, even across thousands of rooms.</li>
+            <li>Supports prefab and entity spawning seamlessly.</li>
+            <li>Highly customizable generation parameters.</li>
+          </ul>
+
+          <a class="btn-ghost" href="https://github.com/Mythus-Z/Procedural-Dungeon-Generation-Roblox-" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
 
       <div class="project-card reveal" data-delay="100">
-        <div class="card-scan-line"></div>
         <div class="project-category">Data</div>
         <h3 class="project-title">Data Saving System</h3>
         <ul class="project-bullets">
@@ -133,14 +129,13 @@ I'm Mythus. — 1.5 years in. I move fast and don't ship anything I wouldn't sta
       </div>
 
       <div class="project-card reveal" data-delay="200">
-        <div class="card-scan-line"></div>
         <div class="project-category">Combat</div>
         <h3 class="project-title">Combat System</h3>
         <ul class="project-bullets">
           <li>Weapons, Combos, Status Effects</li>
           <li>Server-Authority, Hit Validation, Anti-Cheat</li>
           <li>Custom Animations and VFX support</li>
-          <li>Scalable and Modular—Easy to change and expand</li>
+          <li>Scalable and Modular — Easy to change and expand</li>
         </ul>
         <a class="btn-ghost" href="https://github.com/Mythus-Z/Roblox-Combat-System" target="_blank" rel="noopener">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
