@@ -58,7 +58,6 @@
   function animate() {
     ctx.clearRect(0, 0, W, H);
     particles.forEach(p => {
-      // Subtle mouse attraction
       const dx = mouse.x - p.x;
       const dy = mouse.y - p.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -68,24 +67,20 @@
         p.vy += dy / dist * force;
       }
 
-      // Damping
       p.vx *= 0.98;
       p.vy *= 0.98;
 
-      // Clamp speed
       const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
       if (speed > 0.5) { p.vx = p.vx / speed * 0.5; p.vy = p.vy / speed * 0.5; }
 
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap
       if (p.x < 0) p.x = W;
       if (p.x > W) p.x = 0;
       if (p.y < 0) p.y = H;
       if (p.y > H) p.y = 0;
 
-      // Pulse alpha
       p.alpha += p.alphaDir;
       if (p.alpha > 0.55 || p.alpha < 0.05) p.alphaDir *= -1;
 
@@ -121,17 +116,11 @@
   const links = document.querySelectorAll('.nav-links a');
 
   function onScroll() {
-    if (window.scrollY > 60) {
-      nav.classList.add('visible');
-    } else {
-      nav.classList.remove('visible');
-    }
+    nav.classList.toggle('visible', window.scrollY > 60);
 
-    // Active link highlighting
     let current = '';
     sections.forEach(s => {
-      const top = s.offsetTop - 100;
-      if (window.scrollY >= top) current = s.id;
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
     });
 
     links.forEach(a => {
@@ -146,10 +135,9 @@
 
 // ─── SCROLL REVEAL ─────────────────────────────────────────────
 (function () {
-  const els = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((e, i) => {
+      entries.forEach(e => {
         if (e.isIntersecting) {
           const delay = e.target.dataset.delay || 0;
           setTimeout(() => e.target.classList.add('visible'), Number(delay));
@@ -159,13 +147,37 @@
     },
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
   );
-  els.forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 })();
 
 
+// ─── DUNGEON CARD — VIDEO ZOOM ON PLAY ─────────────────────────
+// YouTube iframes post messages with player state changes.
+// State 1 = playing, state 2 = paused, state 0 = ended.
+// We toggle .is-playing on the card to expand the media column via CSS grid.
+(function () {
+  const card = document.getElementById('dungeon-card');
+  if (!card) return;
+
+  window.addEventListener('message', e => {
+    if (!e.origin.includes('youtube.com')) return;
+
+    let data;
+    try { data = JSON.parse(e.data); } catch { return; }
+
+    if (data.event !== 'infoDelivery' || !data.info) return;
+
+    const state = data.info.playerState;
+    if (state === 1) {
+      card.classList.add('is-playing');
+    } else if (state === 2 || state === 0) {
+      card.classList.remove('is-playing');
+    }
+  });
+})();
 
 
-// ─── SMOOTH SCROLL FOR CTA ─────────────────────────────────────
+// ─── SMOOTH SCROLL ─────────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
