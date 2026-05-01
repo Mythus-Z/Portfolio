@@ -151,32 +151,6 @@
 })();
 
 
-// ─── DUNGEON CARD — VIDEO ZOOM ON PLAY ─────────────────────────
-// YouTube iframes post messages with player state changes.
-// State 1 = playing, state 2 = paused, state 0 = ended.
-// We toggle .is-playing on the card to expand the media column via CSS grid.
-(function () {
-  const card = document.getElementById('dungeon-card');
-  if (!card) return;
-
-  window.addEventListener('message', e => {
-    if (!e.origin.includes('youtube.com')) return;
-
-    let data;
-    try { data = JSON.parse(e.data); } catch { return; }
-
-    if (data.event !== 'infoDelivery' || !data.info) return;
-
-    const state = data.info.playerState;
-    if (state === 1) {
-      card.classList.add('is-playing');
-    } else if (state === 2 || state === 0) {
-      card.classList.remove('is-playing');
-    }
-  });
-})();
-
-
 // ─── SMOOTH SCROLL ─────────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
