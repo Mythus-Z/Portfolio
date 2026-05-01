@@ -393,13 +393,8 @@ section {
   background: #000;
   overflow: hidden;
   border-radius: 4px 0 0 4px;
-  transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* When video is playing, the media panel expands */
-.project-card--featured.is-playing {
-  grid-template-columns: 2fr 1fr;
-}
 
 .featured-card-iframe {
   position: absolute;
